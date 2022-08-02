@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const cors = require('cors')
 const history = require('connect-history-api-fallback')
+require("dotenv").config();
 
 const app = express()
 
@@ -18,7 +19,7 @@ app.use(function(req, res, next) {
 })
 
 // database stuff
-const url = "mongodb+srv://emily:Aqshop0802@shopcartcluster.rd3hr.gcp.mongodb.net/?retryWrites=true&w=majority"
+const url = process.env.MONGODB_URI;
 mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
